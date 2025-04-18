@@ -10,7 +10,9 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex space-x-6">
-          <Link href="/">Home</Link>
+          <Link href="/" className="hover:text-blue-600">
+            Home
+          </Link>
           <Link href="/products" className="hover:text-blue-600">
             Products
           </Link>
