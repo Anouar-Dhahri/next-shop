@@ -5,20 +5,13 @@ import Stripe from "stripe";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import { handlePriceFormat } from "@/lib/utils";
+
 type Props = {
   products: Stripe.Product[];
 };
 
 const Carousel = ({ products }: Props) => {
-  const handlePriceFormat = (product: Stripe.Product): string => {
-    const price = product.default_price as Stripe.Price;
-    let value: string = "";
-    if (price && price.unit_amount) {
-      value = (price.unit_amount / 100).toFixed(2);
-    }
-
-    return value;
-  };
 
   return (
     <div>
@@ -40,11 +33,11 @@ const Carousel = ({ products }: Props) => {
                   height={300}
                   className="block"
                 />
-                <div className="w-full flex justify-center items-center flex-col space-y-4 absolute bottom-0 bg-[#222]/70  p-2">
-                  <h1 className="text-2xl font-bold text-white mb-2">
+                <div className="w-full flex justify-center items-center flex-col absolute bottom-0 bg-[#222]/70  p-2">
+                  <h1 className="text-xl font-bold text-white">
                     {product.name}
                   </h1>
-                  <p className="text-xl text-white">
+                  <p className="text-base text-white">
                     ${handlePriceFormat(product)}
                   </p>
                 </div>

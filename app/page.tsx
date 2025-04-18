@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Carousel from "@/components/Carousel/Carousel";
 
-export default async function Home() {
+const Home = async () => {
   const products = await stripe.products.list({
     expand: ["data.default_price"],
     limit: 5,
@@ -25,11 +25,11 @@ export default async function Home() {
             <Button
               asChild
               variant="default"
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 bg-black text-white">
+              className="inline-flex items-center justify-center rounded-full px-6 py-3 bg-black text-white h-[50px]">
               <Link
                 href="/products"
                 className="inline-flex items-center justify-center rounded-full px-6 py-3">
-                All Products
+                <span className="p-4">All Products</span>
               </Link>
             </Button>
           </div>
@@ -42,12 +42,29 @@ export default async function Home() {
           />
         </div>
       </section>
-      <section className="py-8 flex gap-4">
-        <div className="w-1/2">
+      <section className="py-8 w-full flex flex-col lg:flex-row gap-4">
+        <div className="w-full lg:w-1/2">
           <Carousel products={products.data} />
         </div>
-        <div className="w-1/2"></div>
+        <div className="w-full lg:w-1/2 flex flex-col space-y-4 items-center justify-center px-4 text-center">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+            Power Up Your Tech Game!
+          </h1>
+          <p className="text-base md:text-xl lg:text-2xl font-light">
+            Discover the latest in laptops, gaming consoles, and accessories.
+          </p>
+          <p className="text-base md:text-xl lg:text-2xl font-light">
+            Unbeatable prices. Trusted brands. Fast delivery.
+          </p>
+          <Button
+            variant="default"
+            className="inline-flex items-center justify-center rounded-full px-6 py-3 bg-black text-white cursor-pointer text-base h-[50px]">
+            <span className="p-4">Shop Now</span>
+          </Button>
+        </div>
       </section>
     </div>
   );
-}
+};
+
+export default Home;
