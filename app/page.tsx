@@ -42,8 +42,11 @@ export default async function Home() {
           />
         </div>
       </section>
-      <section className="py-8">
-        <Carousel products={products.data} />
+      <section className="py-8 flex gap-4">
+        <div className="w-1/2">
+          <Carousel products={products.data} />
+        </div>
+        <div className="w-1/2"></div>
       </section>
     </div>
   );
