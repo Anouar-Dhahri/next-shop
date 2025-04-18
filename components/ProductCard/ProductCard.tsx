@@ -5,9 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { handlePriceFormat } from "@/lib/utils";
 
-interface Props {
+type Props = {
   product: Stripe.Product;
-}
+};
 
 const ProductCard = ({ product }: Props) => {
   return (
