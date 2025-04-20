@@ -50,11 +50,16 @@ const ProductDetails = ({ product }: Props) => {
         </p>
 
         <div className="flex items-center space-x-4">
-          <Button variant="outline" onClick={() => removeItem(product.id)}>
+          <Button
+            variant="outline"
+            onClick={() => removeItem(product.id)}
+            className="hover:cursor-pointer">
             –
           </Button>
           <span className="text-lg font-semibold">{quantity}</span>
-          <Button onClick={onAddItem}>+</Button>
+          <Button onClick={onAddItem} className="hover:cursor-pointer">
+            +
+          </Button>
         </div>
       </div>
     </div>

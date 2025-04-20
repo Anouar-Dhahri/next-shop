@@ -36,7 +36,9 @@ const ProductCard = ({ product }: Props) => {
           <p className="text-lg font-semibold text-gray-900">
             ${handlePriceFormat(product)}
           </p>
-          <Button className="mt-4 bg-black text-white">View Details</Button>
+          <Button className="mt-4 bg-black text-white hover:cursor-pointer">
+            View Details
+          </Button>
         </CardContent>
       </Card>
     </Link>

@@ -1,6 +1,7 @@
 import ProductList from "@/components/ProductList/ProductList";
 import { stripe } from "@/lib/stripe";
 import React from "react";
+import { MoonLoader } from "react-spinners";
 
 const ProductsPage = async () => {
   const products = await stripe.products.list({
@@ -11,7 +12,11 @@ const ProductsPage = async () => {
       <h1 className="text-3xl font-bold leading-none tracking-tight text-foreground text-center mb-8">
         All Products
       </h1>
-      <ProductList products={products.data} />
+      {!products || products.data?.length === 0 ? (
+        <MoonLoader />
+      ) : (
+        <ProductList products={products.data} />
+      )}
     </div>
   );
 };

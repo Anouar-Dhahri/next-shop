@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Spinner from "../Spinner/Spinner";
+import { PulseLoader } from "react-spinners";
 
 type Props = {
   imageFile: string;
@@ -49,7 +49,12 @@ const WelcomeSection = ({ imageFile }: Props) => {
           </Button>
         </div>
         {!imageFile ? (
-          <Spinner />
+          <PulseLoader
+            size={10}
+            color="#222"
+            loading={true}
+            speedMultiplier={1}
+          />
         ) : (
           <Image
             alt="Banner Image"
