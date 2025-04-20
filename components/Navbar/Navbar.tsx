@@ -1,11 +1,14 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import {
-  ShoppingCartIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { RiNextjsLine } from "react-icons/ri";
+import { CgShoppingBag } from "react-icons/cg";
+import { IoMdClose } from "react-icons/io";
+import { CiMenuFries } from "react-icons/ci";
+import { IoHomeOutline } from "react-icons/io5";
+import { CiBoxes } from "react-icons/ci";
+import { IoBagCheckOutline } from "react-icons/io5";
+
 import { useCartStore } from "@/store/cart-store";
 import { Button } from "../ui/button";
 
@@ -29,21 +32,38 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        <Link href="/" className="hover:text-blue-600">
-          Next Ecommerce
-        </Link>
+        <div className="flex space-x-1 hover:text-blue-600 transition-all duration-400 ease-in-out">
+          <RiNextjsLine className="text-2xl" />
+          <Link href="/" className="font-bold uppercase">
+            NextShop
+          </Link>
+        </div>
+
         <div className="hidden md:flex space-x-6">
-          <Link href="/">Home</Link>
-          <Link href="/products" className="hover:text-blue-600">
-            Products
-          </Link>
-          <Link href="/checkout" className="hover:text-blue-600">
-            Checkout
-          </Link>
+          <div className="flex space-x-1 hover:text-blue-600 transition-all duration-400 ease-in-out">
+            <IoHomeOutline className="text-xl" />
+            <Link href="/" className="font-semibold">
+              Home
+            </Link>
+          </div>
+          <div className="flex space-x-1 hover:text-blue-600 transition-all duration-400 ease-in-out">
+            <CiBoxes className="text-xl" />
+
+            <Link href="/products" className="font-semibold">
+              Products
+            </Link>
+          </div>
+          <div className="flex space-x-1 hover:text-blue-600 transition-all duration-400 ease-in-out">
+            <IoBagCheckOutline className="text-xl" />
+
+            <Link href="/checkout" className="font-semibold">
+              Checkout
+            </Link>
+          </div>
         </div>
         <div className="flex items-center space-x-4">
           <Link href="/checkout" className="relative">
-            <ShoppingCartIcon className="h-6 w-6" />
+            <CgShoppingBag className="h-6 w-6 hover:text-blue-600" />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                 {cartCount}
@@ -52,12 +72,12 @@ const Navbar = () => {
           </Link>
           <Button
             variant="ghost"
-            className="md:hidden"
+            className="md:hidden hover:cursor-pointer hover:text-blue-600"
             onClick={() => setMobileOpen((prev) => !prev)}>
             {mobileOpen ? (
-              <XMarkIcon className="h-6 w-6" />
+              <IoMdClose className="h-6 w-6" />
             ) : (
-              <Bars3Icon className="h-6 w-6" />
+              <CiMenuFries className="h-6 w-6 " />
             )}
           </Button>
         </div>
@@ -65,20 +85,30 @@ const Navbar = () => {
       {mobileOpen && (
         <nav className="md:hidden bg-white shadow-md">
           <ul className="flex flex-col p-4 space-y-2">
-            <li>
-              <Link href="/" className="block hover:text-blue-600">
-                Home
-              </Link>
+            <li className="p-4 hover:bg-gray-100 rounded-2xl transition-all duration-400 ease-in-out">
+              <div className="flex space-x-1 justify-center hover:text-blue-600 transition-all duration-400 ease-in-out">
+                <IoHomeOutline className="text-xl" />
+                <Link href="/" className="font-semibold">
+                  Home
+                </Link>
+              </div>
             </li>
-            <li>
-              <Link href="/products" className="block hover:text-blue-600">
-                Products
-              </Link>
+            <li className="p-4 hover:bg-gray-100 rounded-2xl transition-all duration-400 ease-in-out">
+              <div className="flex space-x-1 justify-center hover:text-blue-600 transition-all duration-400 ease-in-out">
+                <CiBoxes className="text-xl" />
+                <Link href="/products" className="font-semibold">
+                  Products
+                </Link>
+              </div>
             </li>
-            <li>
-              <Link href="/checkout" className="block hover:text-blue-600">
-                Checkout
-              </Link>
+            <li className="p-4 hover:bg-gray-100 rounded-2xl transition-all duration-400 ease-in-out">
+              <div className="flex space-x-1 justify-center hover:text-blue-600 transition-all duration-400 ease-in-out">
+                <IoBagCheckOutline className="text-xl" />
+
+                <Link href="/checkout" className="font-semibold">
+                  Checkout
+                </Link>
+              </div>
             </li>
           </ul>
         </nav>

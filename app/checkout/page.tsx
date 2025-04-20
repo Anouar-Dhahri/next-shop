@@ -37,6 +37,7 @@ const CheckoutPage = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <Button
+                        className="hover:cursor-pointer"
                         variant="outline"
                         size="sm"
                         onClick={() => removeItem(item.id)}>
@@ -46,6 +47,7 @@ const CheckoutPage = () => {
                         {item.quantity}
                       </span>
                       <Button
+                        className="hover:cursor-pointer"
                         variant="outline"
                         size="sm"
                         onClick={() => addItem({ ...item, quantity: 1 })}>
@@ -62,7 +64,10 @@ const CheckoutPage = () => {
           </Card>
           <form action={checkoutAction} className="max-w-md mx-auto">
             <input type="hidden" name="items" value={JSON.stringify(items)} />
-            <Button type="submit" variant="default" className="w-full">
+            <Button
+              type="submit"
+              variant="default"
+              className="w-full hover:cursor-pointer">
               Proceed to Payment
             </Button>
           </form>
