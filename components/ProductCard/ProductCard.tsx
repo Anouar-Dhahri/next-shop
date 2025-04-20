@@ -5,21 +5,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { handlePriceFormat } from "@/lib/utils";
 
-interface Props {
+type Props = {
   product: Stripe.Product;
-}
+};
 
 const ProductCard = ({ product }: Props) => {
   return (
     <Link href={`/products/${product.id}`} className="block h-full">
       <Card className="group hover:shadow-2xl transition duration-300 py-0 h-full flex flex-col border-gray-300 gap-0">
         {product.images && product.images[0] && (
-          <div className="relative h-60 w-full">
+          <div className="flex items-center justify-center h-[300px]">
             <Image
               src={product.images[0]}
               alt={product.name}
-              layout="fill"
-              objectFit="cover"
+              width={300}
+              height={300}
               className="group-hover:opacity-90 transition-opacity duration-300 rounded-t-lg"
             />
           </div>
