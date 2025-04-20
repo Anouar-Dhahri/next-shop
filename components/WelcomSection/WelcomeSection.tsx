@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Spinner from "../Spinner/Spinner";
+
 type Props = {
   imageFile: string;
 };
@@ -47,7 +48,9 @@ const WelcomeSection = ({ imageFile }: Props) => {
             </Link>
           </Button>
         </div>
-        <Suspense fallback={<Spinner />}>
+        {!imageFile ? (
+          <Spinner />
+        ) : (
           <Image
             alt="Banner Image"
             width={450}
@@ -57,7 +60,7 @@ const WelcomeSection = ({ imageFile }: Props) => {
             loading="lazy"
             data-aos="zoom-in"
           />
-        </Suspense>
+        )}
       </div>
     </section>
   );
