@@ -26,7 +26,7 @@ const Carousel = ({ products }: Props) => {
         {products.map((product) => {
           return (
             <SwiperSlide key={product?.id}>
-              <div className="h-[300px] relative inline-bloc items-center flex justify-center bg-gray-100">
+              <div className="h-[300px] relative inline-bloc items-center flex justify-center bg-white">
                 <Image
                   src={product.images[0]}
                   alt={product.name}

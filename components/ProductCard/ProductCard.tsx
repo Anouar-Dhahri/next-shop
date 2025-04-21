@@ -13,7 +13,7 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   return (
-    <div className="flex flex-col gap-4 w-full h-[450px] rounded-3xl border-1">
+    <div className="flex flex-col gap-4 w-full h-[450px] rounded-3xl border-1 bg-white">
       <div className="relative bg-gradient-to-r from-blue-400 to-sky-400 h-[300px] rounded-tl-3xl  rounded-tr-3xl flex items-center justify-center">
         <Image
           src={product.images[0]}

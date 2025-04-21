@@ -51,27 +51,40 @@ const ProductDetails = ({ product }: Props) => {
             </div>
           </div>
         )}
-        <div className="md:w-1/2">
-          <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-          {product.description && (
-            <p className="text-gray-700 mb-4">{product.description}</p>
-          )}
+        <div className="md:w-1/2 flex flex-col gap-5">
+          <div className="rounded-xl bg-white p-4">
+            <h1 className="text-xl font-bold">{product.name}</h1>
+          </div>
 
-          <p className="text-lg font-semibold text-gray-900">
-            ${handlePriceFormat(product)}
-          </p>
+          <div className="rounded-xl bg-white p-4">
+            {product.description && (
+              <p className="text-black italic mb-4">{product.description}</p>
+            )}
+          </div>
 
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="outline"
-              onClick={() => removeItem(product.id)}
-              className="hover:cursor-pointer">
-              –
-            </Button>
-            <span className="text-lg font-semibold">{quantity}</span>
-            <Button onClick={onAddItem} className="hover:cursor-pointer">
-              +
-            </Button>
+          <div className="flex flex-row justify-between gap-4">
+            <div className="flex space-x-2 bg-white p-4 rounded-4xl flex-2/3 justify-between">
+              <p className="text-lg font-light text-gray-500">Price : </p>
+              <p className="text-lg font-semibold text-gray-900">
+                ${handlePriceFormat(product)}
+              </p>
+            </div>
+            <div className="flex items-center space-x-4 bg-white p-4 rounded-4xl flex-1/3 justify-evenly">
+              <Button
+                variant="outline"
+                onClick={() => removeItem(product.id)}
+                className="hover:cursor-pointer border-none bg-gray-200">
+                –
+              </Button>
+              <span className="text-lg font-semibold text-black">
+                {quantity}
+              </span>
+              <Button
+                onClick={onAddItem}
+                className="hover:cursor-pointer border-none font-bold">
+                +
+              </Button>
+            </div>
           </div>
         </div>
       </div>

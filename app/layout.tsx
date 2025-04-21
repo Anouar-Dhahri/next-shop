@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex min-h-full flex-col bg-white ${libreFranklin.className} tracking-wider`}>
+        className={`flex min-h-full flex-col bg-gray-100 ${libreFranklin.className} tracking-wider`}>
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-8 min-h-[80vh]">
           {children}

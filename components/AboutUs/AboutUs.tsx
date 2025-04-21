@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 const AboutUs = () => {
   return (
     <div
-      className="w-full lg:w-1/2 flex flex-col space-y-4 items-center justify-center px-4 text-center"
+      className="w-full lg:w-1/2 flex flex-col space-y-4 items-center justify-center px-4 text-center bg-white rounded-xl"
       data-aos="fade-up">
       <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
         Power Up Your Tech Game!
