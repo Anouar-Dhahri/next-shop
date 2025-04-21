@@ -57,7 +57,7 @@ const CheckoutPage = () => {
 
             <div className="flex flex-col gap-4 ">
               <div className="flex flex-col bg-white rounded-3xl p-8 h-150 overflow-auto">
-                <div className="flex flex-row gap-4 mb-4 ">
+                <div className="flex flex-row gap-4 mb-4">
                   <div className="flex flex-2/5 min-w-[300px]">
                     <p className="font-bold">Product</p>
                   </div>
