@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Libre_Franklin } from "next/font/google";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "NEXTSHOP",
@@ -22,11 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex min-h-full flex-col bg-white ${libreFranklin.className}`}>
+        className={`flex min-h-full flex-col bg-white ${libreFranklin.className} tracking-wider`}>
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-8">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
