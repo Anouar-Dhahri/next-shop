@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Stripe from "stripe";
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Button } from "../ui/button";
+// import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+// import { Button } from "../ui/button";
 import { handlePriceFormat } from "@/lib/utils";
+import { FaHeart } from "react-icons/fa";
+import { BiSolidInfoCircle } from "react-icons/bi";
 
 type Props = {
   product: Stripe.Product;
@@ -11,37 +13,33 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   return (
-    <Link href={`/products/${product.id}`} className="block h-full">
-      <Card className="group hover:shadow-2xl transition duration-300 py-0 h-full flex flex-col border-gray-300 gap-0">
-        {product.images && product.images[0] && (
-          <div className="flex items-center justify-center h-[300px]">
-            <Image
-              src={product.images[0]}
-              alt={product.name}
-              width={300}
-              height={300}
-              className="group-hover:opacity-90 transition-opacity duration-300 rounded-t-lg"
-            />
-          </div>
-        )}
-        <CardHeader className="p-4">
-          <CardTitle className="text-xl font-bold text-gray-800">
-            {product.name}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-4 flex-grow flex flex-col justify-between">
-          {product.description && (
-            <p className="text-gray-600 text-sm mb-2">{product.description}</p>
-          )}
-          <p className="text-lg font-semibold text-gray-900">
-            ${handlePriceFormat(product)}
-          </p>
-          <Button className="mt-4 bg-black text-white hover:cursor-pointer">
-            View Details
-          </Button>
-        </CardContent>
-      </Card>
-    </Link>
+    <div className="flex flex-col gap-4 w-full h-[450px] rounded-3xl border-1 bg-white">
+      <div className="relative bg-gradient-to-r from-blue-400 to-sky-400 h-[300px] rounded-tl-3xl  rounded-tr-3xl flex items-center justify-center">
+        <Image
+          src={product.images[0]}
+          alt={product.name}
+          width={200}
+          height={200}
+          className="group-hover:opacity-90 transition-opacity duration-300 rounded-t-lg"
+        />
+        <div className="w-10 h-10 absolute top-1 right-2 hover:cursor-pointer rounded-full bg-transparent flex items-center justify-center hover:bg-black  text-white transition-all duration-300 ease-in-out">
+          <FaHeart className="w-6 h-6" />
+        </div>
+      </div>
+      <div className="p-4 flex flex-col gap-3 relative">
+        <h1 className="text-md font-semibold">{product.name}</h1>
+        <p className="text-base font-light text-gray-400">Price</p>
+        <p className="text-md font-bold text-gray-900">
+          ${handlePriceFormat(product)}
+        </p>
+        <Link href={`/products/${product.id}`}>
+          <button className="absolute rounded-xl w-[180px] h-13 bottom-2 right-4 text-white bg-black text-base hover:cursor-pointer flex justify-center items-center space-x-2">
+            <BiSolidInfoCircle className="text-center w-6 h-6" />{" "}
+            <span>View Details</span>
+          </button>
+        </Link>
+      </div>
+    </div>
   );
 };
 

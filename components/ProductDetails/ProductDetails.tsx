@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { handlePriceFormat } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
-
+import Breadcrumb from "../Breadcrumb/Breadcrumb";
+import { FaHeart } from "react-icons/fa";
 type Props = {
   product: Stripe.Product;
 };
@@ -27,39 +28,64 @@ const ProductDetails = ({ product }: Props) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 items-center">
-      {product.images && product.images[0] && (
-        <div className="relative h-96 w-full md:w-1/2 rounded-lg overflow-hidden">
-          <Image
-            src={product.images[0]}
-            alt={product.name}
-            layout="fill"
-            objectFit="cover"
-            className="transition duration-300 hover:opacity-90"
-          />
-        </div>
-      )}
-      <div className="md:w-1/2">
-        <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-        {product.description && (
-          <p className="text-gray-700 mb-4">{product.description}</p>
+    <div>
+      <div className="flex flex-col gap-2 flex-1/2">
+        <h1 className="text-2xl font-light bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
+          Product Details
+        </h1>
+        <Breadcrumb />
+      </div>
+
+      <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 items-center">
+        {product.images && product.images[0] && (
+          <div className="relative bg-gradient-to-r from-blue-400 to-sky-400 h-[500px] rounded-3xl flex items-center justify-center w-full md:w-1/2">
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              width={450}
+              height={450}
+              className="transition duration-300 hover:opacity-90"
+            />
+            <div className="w-10 h-10 absolute top-1 right-2 hover:cursor-pointer rounded-full bg-transparent flex items-center justify-center hover:bg-black  text-white transition-all duration-300 ease-in-out">
+              <FaHeart className="w-6 h-6" />
+            </div>
+          </div>
         )}
+        <div className="md:w-1/2 flex flex-col gap-5">
+          <div className="rounded-xl bg-white p-4">
+            <h1 className="text-xl font-bold">{product.name}</h1>
+          </div>
 
-        <p className="text-lg font-semibold text-gray-900">
-          ${handlePriceFormat(product)}
-        </p>
+          <div className="rounded-xl bg-white p-4">
+            {product.description && (
+              <p className="text-black italic mb-4">{product.description}</p>
+            )}
+          </div>
 
-        <div className="flex items-center space-x-4">
-          <Button
-            variant="outline"
-            onClick={() => removeItem(product.id)}
-            className="hover:cursor-pointer">
-            –
-          </Button>
-          <span className="text-lg font-semibold">{quantity}</span>
-          <Button onClick={onAddItem} className="hover:cursor-pointer">
-            +
-          </Button>
+          <div className="flex flex-row justify-between gap-4">
+            <div className="flex space-x-2 bg-white p-4 rounded-4xl flex-2/3 justify-between">
+              <p className="text-lg font-light text-gray-500">Price : </p>
+              <p className="text-lg font-semibold text-gray-900">
+                ${handlePriceFormat(product)}
+              </p>
+            </div>
+            <div className="flex items-center space-x-4 bg-white p-4 rounded-4xl flex-1/3 justify-evenly">
+              <Button
+                variant="outline"
+                onClick={() => removeItem(product.id)}
+                className="hover:cursor-pointer border-none bg-gray-200">
+                –
+              </Button>
+              <span className="text-lg font-semibold text-black">
+                {quantity}
+              </span>
+              <Button
+                onClick={onAddItem}
+                className="hover:cursor-pointer border-none font-bold">
+                +
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
