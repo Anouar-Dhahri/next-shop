@@ -25,7 +25,7 @@ export default function RootLayout({
       <body
         className={`flex min-h-full flex-col bg-white ${libreFranklin.className} tracking-wider`}>
         <Navbar />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main className="flex-grow container mx-auto px-4 py-8 min-h-[80vh]">
           {children}
         </main>
         <Footer />
