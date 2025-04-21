@@ -98,7 +98,6 @@ const Footer = () => {
             </p>
 
             <div className="w-full bg-white flex flex-row space-x-3 p-4 rounded-lg">
-              {/* <MdEmail className="h-8 w-8 bg-gradient-to-r from-blue-500 to-sky-500" /> */}
               <div className="h-12 w-12 flex items-center justify-center rounded-4xl bg-gradient-to-r from-blue-500 to-sky-500 text-white">
                 <MdEmail className="h-6 w-6" />
               </div>

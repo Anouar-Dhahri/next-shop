@@ -7,7 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiBoxes } from "react-icons/ci";
-import { IoBagCheckOutline } from "react-icons/io5";
+// import { IoBagCheckOutline } from "react-icons/io5";
 
 import { useCartStore } from "@/store/cart-store";
 import { Button } from "../ui/button";
@@ -53,13 +53,13 @@ const Navbar = () => {
               Products
             </Link>
           </div>
-          <div className="flex space-x-1 hover:text-blue-600 transition-all duration-400 ease-in-out">
+          {/* <div className="flex space-x-1 hover:text-blue-600 transition-all duration-400 ease-in-out">
             <IoBagCheckOutline className="text-xl" />
 
             <Link href="/checkout" className="font-semibold">
               Checkout
             </Link>
-          </div>
+          </div> */}
         </div>
         <div className="flex items-center space-x-4">
           <Link href="/checkout" className="relative">
@@ -101,7 +101,7 @@ const Navbar = () => {
                 </Link>
               </div>
             </li>
-            <li className="p-4 hover:bg-gray-100 rounded-2xl transition-all duration-400 ease-in-out">
+            {/* <li className="p-4 hover:bg-gray-100 rounded-2xl transition-all duration-400 ease-in-out">
               <div className="flex space-x-1 justify-center hover:text-blue-600 transition-all duration-400 ease-in-out">
                 <IoBagCheckOutline className="text-xl" />
 
@@ -109,7 +109,7 @@ const Navbar = () => {
                   Checkout
                 </Link>
               </div>
-            </li>
+            </li> */}
           </ul>
         </nav>
       )}

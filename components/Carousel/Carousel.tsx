@@ -16,6 +16,7 @@ const Carousel = ({ products }: Props) => {
   return (
     <div>
       <Swiper
+        className="rounded-xl"
         centeredSlides={true}
         modules={[Autoplay]}
         autoplay={{
