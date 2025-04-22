@@ -21,10 +21,9 @@ const CheckoutPage = () => {
     0
   );
 
-  console.log(items);
   return (
     <div>
-      <div className="flex flex-col gap-2 flex-1/2">
+      <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-light bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
           Checkout
         </h1>
@@ -41,7 +40,7 @@ const CheckoutPage = () => {
           <div className="flex flex-col gap-4">
             <div className="flex flex-row justify-between p-8 bg-white rounded-3xl">
               <h1 className="text-base font-light justify-center flex items-center gap-2">
-              <FaBoxesPacking className="text-center w-10 h-10 text-blue-500"/>
+                <FaBoxesPacking className="text-center w-10 h-10 text-blue-500" />
                 <span className="font-bold">
                   {items?.length} {items.length > 2 ? "items" : "item"}
                 </span>{" "}
@@ -49,8 +48,8 @@ const CheckoutPage = () => {
               </h1>
               <button
                 onClick={() => clearCart()}
-                className="flex justify-center items-center space-x-2 text-base p-3 text-red-400 rounded-3xl hover:cursor-pointer border-1 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-300 ease-in-out">
-                <FaRegTrashAlt className="text-center w-6 h-6" />{" "}
+                className="flex justify-center items-center space-x-2 text-sm md:text-base p-3 text-red-400 rounded-3xl hover:cursor-pointer border-1 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-300 ease-in-out">
+                <FaRegTrashAlt className="text-center w-3 md:w-6 h-3 md:h-6" />{" "}
                 <span>Clear Cart</span>
               </button>
             </div>
@@ -182,10 +181,10 @@ const CheckoutPage = () => {
                         Calculated Shipping
                       </h1>
                       <div className="w-full h-12 bg-gray-300 rounded-3xl flex justify-center  pl-4 pr-4">
-                        <select className="w-full outline-none">
-                          <option value="country" selected>
-                            Country
-                          </option>
+                        <select
+                          className="w-full outline-none"
+                          defaultValue={"country"}>
+                          <option value="country">Country</option>
                           {countryList.map((country, idx) => (
                             <option
                               key={idx}

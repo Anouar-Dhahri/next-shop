@@ -1,4 +1,5 @@
 "use client";
+import dayjs from "dayjs";
 import Link from "next/link";
 import React from "react";
 import { MdEmail } from "react-icons/md";
@@ -128,7 +129,7 @@ const Footer = () => {
           </p>
           <p className="text-base font-light text-white tracking-wider">
             <span className="font-bold">NEXTSHOP</span> © - All Right Reserved{" "}
-            {new Date().getFullYear().toString()}
+            {dayjs().format("YYYY")}
           </p>
         </div>
       </div>

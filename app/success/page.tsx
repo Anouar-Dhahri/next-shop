@@ -1,25 +1,26 @@
-"use client";
+import SuccessPayment from "@/components/SuccessPayment/SuccessPayment";
+import { stripe } from "@/lib/stripe";
+import React from "react";
 
-import { useCartStore } from "@/store/cart-store";
-import Link from "next/link";
-import { useEffect } from "react";
+type Props = {
+  searchParams: { session_id: string };
+};
 
-const SuccessPage = () => {
-  const { clearCart } = useCartStore();
-  useEffect(() => {
-    clearCart();
-  }, [clearCart]);
-  return (
-    <div className="container mx-auto px-4 py-8 text-center">
-      <h1 className="text-3xl font-bold mb-4">Payment Successful!</h1>
-      <p className="mb-4">
-        Thank you for your purchase. Your order is being processed.
-      </p>
-      <Link href="/products" className="text-blue-600 hover:underline">
-        Continue Shopping
-      </Link>
-    </div>
-  );
+const SuccessPage = async ({ searchParams }: Props) => {
+  try {
+    const session_id = searchParams.session_id;
+
+    if (!session_id) return <h1>No session ID found.</h1>;
+
+    const paymentInfo = await stripe.checkout.sessions.retrieve(session_id, {
+      expand: ["payment_intent.payment_method"],
+    });
+
+    return <SuccessPayment checkoutSession={paymentInfo} />;
+  } catch (error) {
+    console.error(error);
+    return <h1>Checkout Session Data Retrived Successfully </h1>;
+  }
 };
 
 export default SuccessPage;
