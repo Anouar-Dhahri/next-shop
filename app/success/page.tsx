@@ -3,12 +3,12 @@ import { stripe } from "@/lib/stripe";
 import React from "react";
 
 type Props = {
-  searchParams: { session_id: string };
+  searchParams?: { [key: string]: string };
 };
 
 const SuccessPage = async ({ searchParams }: Props) => {
   try {
-    const session_id = searchParams.session_id;
+    const session_id = searchParams?.session_id;
 
     if (!session_id) return <h1>No session ID found.</h1>;
 
