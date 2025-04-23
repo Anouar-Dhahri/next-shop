@@ -3,14 +3,17 @@ import { stripe } from "@/lib/stripe";
 import React from "react";
 
 type Props = {
-  searchParams?: { [key: string]: string | undefined };
+  searchParams?: Promise<{ session_id: string | undefined }>;
 };
 
 const SuccessPage = async ({ searchParams }: Props) => {
   try {
-    const session_id = searchParams?.session_id;
+    const data = await searchParams;
+    const session_id = data?.session_id;
 
-    if (!session_id) return <h1>No session ID found.</h1>;
+    if (!session_id || typeof session_id !== "string") {
+      return <h1>No session ID found.</h1>;
+    }
 
     const paymentInfo = await stripe.checkout.sessions.retrieve(session_id, {
       expand: ["payment_intent.payment_method"],
