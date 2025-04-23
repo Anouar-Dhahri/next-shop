@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.0",
+    "@react-pdf/renderer": "^4.3.0",
     "@tailwindcss/postcss": "^4.1.4",
     "@types/aos": "^3.0.7",
     "aos": "^2.3.4",

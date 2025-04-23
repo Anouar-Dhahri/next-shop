@@ -25,6 +25,26 @@ const SuccessPayment = ({ checkoutSession }: Props) => {
     clearCart();
   }, [clearCart]);
 
+  const handleReceiptDownload = ({
+    RefNumber,
+    PaymentMethod,
+    CustomerName,
+    TotalPayment,
+  }: {
+    RefNumber: string;
+    PaymentMethod: string;
+    CustomerName: string;
+    TotalPayment: string;
+  }) => {
+    const apiUrl = `/api/pdf?RefNumber=${RefNumber}&PaymentMethod=${PaymentMethod}&CustomerName=${CustomerName}&TotalPayment=${TotalPayment}`;
+    const link = document.createElement("a");
+    link.href = apiUrl;
+    link.target = "_blank"; // optional, prevents blocking
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="flex w-full min-h-screen items-center justify-center">
       <div className="flex flex-col mt-7 md:mt-0 lg:mt-0 w-full md:w-[70%] lg:w-[50%] items-center justify-center gap-4 bg-white rounded-3xl p-8 relative">
@@ -94,7 +114,7 @@ const SuccessPayment = ({ checkoutSession }: Props) => {
               <CiUser className="w-12 h-12" />
             </div>
             <div className="flex flex-col gap-2 items-start justify-center">
-              <p className="text-sm font-bold text-black">Sender Name</p>
+              <p className="text-sm font-bold text-black">Customer Name</p>
               <p className="text-sm font-light text-gray-700">
                 {checkoutSession?.customer_details?.name}
               </p>
@@ -109,7 +129,22 @@ const SuccessPayment = ({ checkoutSession }: Props) => {
             <CgShoppingBag className="w-6 h-6" /> <span>Continue Shopping</span>
           </button>
 
-          <button className="p-4 flex items-center justify-center text-white bg-gray-600 rounded-4xl space-x-2 hover:cursor-pointer">
+          <button
+            onClick={() =>
+              handleReceiptDownload({
+                RefNumber: paymentIntent.id,
+                PaymentMethod: paymentMethod?.card?.brand
+                  ? paymentMethod?.card?.brand?.toUpperCase()
+                  : "",
+                CustomerName: checkoutSession?.customer_details?.name
+                  ? checkoutSession?.customer_details?.name
+                  : "",
+                TotalPayment: checkoutSession?.amount_total
+                  ? (checkoutSession?.amount_total / 100).toFixed(2)
+                  : "0",
+              })
+            }
+            className="p-4 flex items-center justify-center text-white bg-gray-600 rounded-4xl space-x-2 hover:cursor-pointer">
             <AiOutlineDownload className="w-6 h-6" />{" "}
             <span>Get PDF Receipt</span>
           </button>
