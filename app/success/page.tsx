@@ -3,7 +3,7 @@ import { stripe } from "@/lib/stripe";
 import React from "react";
 
 type Props = {
-  searchParams?: { [key: string]: string };
+  searchParams?: { session_id: string };
 };
 
 const SuccessPage = async ({ searchParams }: Props) => {
