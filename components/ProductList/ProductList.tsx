@@ -19,7 +19,7 @@ const ProductList = ({ products }: Props) => {
       await import("aos");
       AOS.init({
         duration: 1000,
-        easing: "ease",
+        easing: "ease-in-out",
         once: true,
         anchorPlacement: "top-bottom",
       });

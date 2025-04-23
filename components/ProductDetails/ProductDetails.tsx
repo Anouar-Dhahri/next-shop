@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Stripe from "stripe";
 import Image from "next/image";
 import { Button } from "../ui/button";
@@ -7,6 +7,9 @@ import { handlePriceFormat } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import { FaHeart } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 type Props = {
   product: Stripe.Product;
 };
@@ -16,6 +19,19 @@ const ProductDetails = ({ product }: Props) => {
   const price = product.default_price as Stripe.Price;
   const cartItem = items.find((item) => item.id === product.id);
   const quantity = cartItem ? cartItem.quantity : 0;
+
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
 
   const onAddItem = () => {
     addItem({
@@ -38,7 +54,10 @@ const ProductDetails = ({ product }: Props) => {
 
       <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 items-center">
         {product.images && product.images[0] && (
-          <div className="relative bg-gradient-to-r from-blue-400 to-sky-400 h-[500px] rounded-3xl flex items-center justify-center w-full md:w-1/2">
+          <div
+            className="relative bg-gradient-to-r from-blue-400 to-sky-400 h-[500px] rounded-3xl flex items-center justify-center w-full md:w-1/2"
+            data-aos="zoom-in"
+            data-aos-delay={1000}>
             <Image
               src={product.images[0]}
               alt={product.name}
@@ -52,17 +71,28 @@ const ProductDetails = ({ product }: Props) => {
           </div>
         )}
         <div className="md:w-1/2 flex flex-col gap-5">
-          <div className="rounded-xl bg-white p-4">
-            <h1 className="text-xl font-bold">{product.name}</h1>
+          <div
+            className="rounded-xl bg-white p-4 font-medium"
+            data-aos="fade-down"
+            data-aos-delay={1500}>
+            <h1 className="text-xl">{product.name}</h1>
           </div>
 
-          <div className="rounded-xl bg-white p-4">
+          <div
+            className="rounded-xl bg-white p-4"
+            data-aos="fade-down"
+            data-aos-delay={2000}>
             {product.description && (
-              <p className="text-black italic mb-4">{product.description}</p>
+              <p className="text-gray-700 italic mb-4 font-light ">
+                {product.description}
+              </p>
             )}
           </div>
 
-          <div className="flex flex-row justify-between gap-4">
+          <div
+            className="flex flex-row justify-between gap-4"
+            data-aos="fade-down"
+            data-aos-delay={2500}>
             <div className="flex space-x-2 bg-white p-4 rounded-4xl flex-2/3 justify-between">
               <p className="text-lg font-light text-gray-500">Price : </p>
               <p className="text-lg font-semibold text-gray-900">
