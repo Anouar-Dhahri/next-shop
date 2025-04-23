@@ -25,7 +25,6 @@ const SuccessPayment = ({ checkoutSession }: Props) => {
     clearCart();
   }, [clearCart]);
 
-  console.log({ checkoutSession });
   return (
     <div className="flex w-full min-h-screen items-center justify-center">
       <div className="flex flex-col mt-7 md:mt-0 lg:mt-0 w-full md:w-[70%] lg:w-[50%] items-center justify-center gap-4 bg-white rounded-3xl p-8 relative">
