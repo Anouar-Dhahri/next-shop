@@ -1,105 +1,106 @@
 "use client";
+import dayjs from "dayjs";
 import Link from "next/link";
 import React from "react";
 import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="flex bg-black bottom-0 left-0">
+    <div className="flex bg-white bottom-0 left-0">
       <div className="w-[80%] m-auto">
-        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="flex flex-col gap-4">
-            <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
+        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="flex flex-col gap-4 justify-center md:justify-start items-center sm:items-start md:items-start">
+            <h1 className="text-md font-extralight bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
               Gallery
             </h1>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Community
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Trending
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Picks
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Blogs
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Inspiration
             </Link>
           </div>
-          <div className="flex flex-col gap-4">
-            <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
+          <div className="flex flex-col gap-4 justify-center md:justify-start items-center sm:items-start md:items-start">
+            <h1 className="text-md font-extralight bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
               Marketplace
             </h1>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Trending
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Best selling
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Latest
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               News
             </Link>
           </div>
-          <div className="flex flex-col gap-4">
-            <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
+          <div className="flex flex-col gap-4 justify-center md:justify-start items-center sm:items-start md:items-start">
+            <h1 className="text-md font-extralight bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
               FAQ
             </h1>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               About
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Career
             </Link>
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Payments
             </Link>{" "}
             <Link
               href="#"
-              className="text-base font-light text-white hover:underline">
+              className="text-sm font-extralight text-black hover:underline">
               Returns
             </Link>
           </div>
-          <div className="flex flex-col gap-4">
-            <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
+          <div className="flex flex-col gap-4 justify-center md:justify-start items-center sm:items-start md:items-start">
+            <h1 className="text-md font-extralight bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
               Newsletter
             </h1>
-            <p className="text-base font-light text-white tracking-wider">
+            <p className="text-sm font-extralight text-black tracking-wider">
               Subscribe to our newsletter to get your weekly dose of news,
               updates, tips and special offers.{" "}
             </p>
 
-            <div className="w-full bg-white flex flex-row space-x-3 p-4 rounded-lg">
-              <div className="h-12 w-12 flex items-center justify-center rounded-4xl bg-gradient-to-r from-blue-500 to-sky-500 text-white">
-                <MdEmail className="h-6 w-6" />
+            <div className="w-full h-12 bg-gray-200 flex flex-row space-x-3 rounded-lg items-center justify-center pr-2 pl-2">
+              <div className="h-8 w-8 flex items-center justify-center rounded-4xl bg-gradient-to-r from-blue-500 to-sky-500 text-black">
+                <MdEmail className="h-5 w-5" />
               </div>
               <input
                 type="email"
@@ -109,15 +110,15 @@ const Footer = () => {
             </div>
             <button
               type="submit"
-              className="w-full p-4 text-white rounded-lg hover:cursor-pointer bg-gradient-to-r from-blue-500 to-sky-500">
+              className="w-full h-12 uppercase font-extralight text-white text-sm rounded-lg hover:cursor-pointer bg-gradient-to-r from-blue-500 to-sky-500">
               Subscribe
             </button>
           </div>
         </div>
 
         <hr />
-        <div className="flex flex-col md:flex-row sm:items-center sm:gap-4 justify-between p-5 mb-5">
-          <p className="text-base font-light text-white tracking-wider">
+        <div className="flex flex-col md:flex-row items-center sm:gap-4 justify-center md:justify-between p-5 mb-5">
+          <p className="text-sm font-light text-black tracking-wider">
             <Link href="#" className="hover:underline">
               Privacy Policy
             </Link>{" "}
@@ -126,9 +127,9 @@ const Footer = () => {
               Terms and conditions
             </Link>
           </p>
-          <p className="text-base font-light text-white tracking-wider">
+          <p className="text-sm font-light text-black tracking-wider">
             <span className="font-bold">NEXTSHOP</span> © - All Right Reserved{" "}
-            {new Date().getFullYear().toString()}
+            {dayjs().format("YYYY")}
           </p>
         </div>
       </div>

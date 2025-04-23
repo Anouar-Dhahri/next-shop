@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cart-store";
 import { checkoutAction } from "./checkout-action";
@@ -13,6 +13,8 @@ import { IoChatboxEllipses } from "react-icons/io5";
 import { TbGiftFilled } from "react-icons/tb";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaBoxesPacking } from "react-icons/fa6";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const CheckoutPage = () => {
   const { items, removeItem, addItem, clearCart } = useCartStore();
@@ -21,10 +23,22 @@ const CheckoutPage = () => {
     0
   );
 
-  console.log(items);
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
+
   return (
     <div>
-      <div className="flex flex-col gap-2 flex-1/2">
+      <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-light bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
           Checkout
         </h1>
@@ -33,15 +47,20 @@ const CheckoutPage = () => {
 
       <div className="container mx-auto px-4 py-8">
         {items?.length === 0 ? (
-          <div className="min-h-100 flex flex-col items-center justify-center text-gray-300 space-y-4">
+          <div
+            className="min-h-100 flex flex-col items-center justify-center text-gray-300 space-y-4"
+            data-aos="zoom-in">
             <CgShoppingBag className="w-40 h-40 " />
             <h1 className="text-4xl font-semibold">Your Cart is Empty</h1>
           </div>
         ) : (
           <div className="flex flex-col gap-4">
-            <div className="flex flex-row justify-between p-8 bg-white rounded-3xl">
+            <div
+              className="flex flex-row justify-between p-8 bg-white rounded-3xl"
+              data-aos="fade-up"
+              data-aos-delay={500}>
               <h1 className="text-base font-light justify-center flex items-center gap-2">
-              <FaBoxesPacking className="text-center w-10 h-10 text-blue-500"/>
+                <FaBoxesPacking className="text-center w-10 h-10 text-blue-500" />
                 <span className="font-bold">
                   {items?.length} {items.length > 2 ? "items" : "item"}
                 </span>{" "}
@@ -49,15 +68,18 @@ const CheckoutPage = () => {
               </h1>
               <button
                 onClick={() => clearCart()}
-                className="flex justify-center items-center space-x-2 text-base p-3 text-red-400 rounded-3xl hover:cursor-pointer border-1 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-300 ease-in-out">
-                <FaRegTrashAlt className="text-center w-6 h-6" />{" "}
+                className="flex justify-center items-center space-x-2 text-sm md:text-base p-3 text-red-400 rounded-3xl hover:cursor-pointer border-1 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-300 ease-in-out">
+                <FaRegTrashAlt className="text-center w-3 md:w-6 h-3 md:h-6" />{" "}
                 <span>Clear Cart</span>
               </button>
             </div>
 
-            <div className="flex flex-col gap-4 ">
-              <div className="flex flex-col bg-white rounded-3xl p-8 h-150 overflow-auto">
-                <div className="flex flex-row gap-4 mb-4 ">
+            <div className="flex flex-col gap-4">
+              <div
+                className="flex flex-col bg-white rounded-3xl p-8 h-150 overflow-auto"
+                data-aos="fade-up"
+                data-aos-delay={1000}>
+                <div className="flex flex-row gap-4 mb-4">
                   <div className="flex flex-2/5 min-w-[300px]">
                     <p className="font-bold">Product</p>
                   </div>
@@ -123,7 +145,10 @@ const CheckoutPage = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="flex flex-row p-4 rounded-3xl bg-white gap-2">
+                <div
+                  className="flex flex-row p-4 rounded-3xl bg-white gap-2"
+                  data-aos="fade-right"
+                  data-aos-delay={1500}>
                   <div className="w-[80px] h-[80px] text-black flex items-center justify-center bg-purple-300 rounded-2xl">
                     <FaShippingFast className="w-12 h-12" />
                   </div>
@@ -136,7 +161,10 @@ const CheckoutPage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-row p-4 rounded-3xl bg-white gap-2">
+                <div
+                  className="flex flex-row p-4 rounded-3xl bg-white gap-2"
+                  data-aos="fade-right"
+                  data-aos-delay={2000}>
                   <div className="w-[80px] h-[80px] text-black flex items-center justify-center bg-orange-300 rounded-2xl">
                     <MdOutlineSupportAgent className="w-12 h-12" />
                   </div>
@@ -149,7 +177,10 @@ const CheckoutPage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-row p-4 rounded-3xl bg-white gap-2">
+                <div
+                  className="flex flex-row p-4 rounded-3xl bg-white gap-2"
+                  data-aos="fade-right"
+                  data-aos-delay={2500}>
                   <div className="w-[80px] h-[80px] text-black flex items-center justify-center bg-emerald-300 rounded-2xl">
                     <IoChatboxEllipses className="w-12 h-12" />
                   </div>
@@ -160,7 +191,10 @@ const CheckoutPage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-row p-4 rounded-3xl bg-white gap-2">
+                <div
+                  className="flex flex-row p-4 rounded-3xl bg-white gap-2"
+                  data-aos="fade-right"
+                  data-aos-delay={3000}>
                   <div className="w-[80px] h-[80px] text-black flex items-center justify-center bg-yellow-300 rounded-2xl">
                     <TbGiftFilled className="w-12 h-12" />
                   </div>
@@ -175,17 +209,20 @@ const CheckoutPage = () => {
 
               <div className="flex flex-col md:flex-row gap-4">
                 {/** Calculate Shipping */}
-                <div className="flex flex-1/2 flex-col md:flex-row gap-4">
+                <div
+                  className="flex flex-1/2 flex-col md:flex-row gap-4"
+                  data-aos="fade-up"
+                  data-aos-delay={3500}>
                   <div className="flex flex-col flex-1/2 bg-white rounded-3xl p-8 gap-8">
                     <div className="flex flex-col gap-4">
                       <h1 className="text-2xl font-bold">
                         Calculated Shipping
                       </h1>
                       <div className="w-full h-12 bg-gray-300 rounded-3xl flex justify-center  pl-4 pr-4">
-                        <select className="w-full outline-none">
-                          <option value="country" selected>
-                            Country
-                          </option>
+                        <select
+                          className="w-full outline-none"
+                          defaultValue={"country"}>
+                          <option value="country">Country</option>
                           {countryList.map((country, idx) => (
                             <option
                               key={idx}
@@ -221,7 +258,10 @@ const CheckoutPage = () => {
                 </div>
 
                 {/** Coupon */}
-                <div className="flex flex-1/2 flex-col gap-4 bg-white rounded-3xl p-8">
+                <div
+                  className="flex flex-1/2 flex-col gap-4 bg-white rounded-3xl p-8"
+                  data-aos="fade-up"
+                  data-aos-delay={4000}>
                   <h1 className="text-2xl font-bold">Coupon Code</h1>
                   <p className="text-base font-semibold">Have a coupon code?</p>
                   <p className="text-base font-light text-gray-400">
@@ -241,7 +281,10 @@ const CheckoutPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 bg-white rounded-3xl p-8">
+              <div
+                className="flex flex-col gap-2 bg-white rounded-3xl p-8"
+                data-aos="fade-up"
+                data-aos-delay={4500}>
                 <h1 className="text-2xl font-bold">Cart Total</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
                   <div className="flex flex-row md:flex-col justify-between pl-4 pr-4">

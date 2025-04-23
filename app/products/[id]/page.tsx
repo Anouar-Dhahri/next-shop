@@ -9,7 +9,7 @@ const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
       expand: ["default_price"],
     });
     const plainProduct = JSON.parse(JSON.stringify(product));
-    console.log(plainProduct);
+
     return <ProductDetails product={plainProduct} />;
   } catch (error) {
     console.error("Error fetching products :", error);

@@ -19,7 +19,7 @@ const ProductList = ({ products }: Props) => {
       await import("aos");
       AOS.init({
         duration: 1000,
-        easing: "ease",
+        easing: "ease-in-out",
         once: true,
         anchorPlacement: "top-bottom",
       });
@@ -52,11 +52,11 @@ const ProductList = ({ products }: Props) => {
             <HiMagnifyingGlass className="h-6 w-6" />
           </div>
           <input
-            type="text"
+            type="search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search products..."
-            className="outline-none h-12"
+            className="outline-none h-12 w-full pl-1 pr-2"
           />
         </div>
       </div>

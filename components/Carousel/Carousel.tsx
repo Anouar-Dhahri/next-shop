@@ -12,7 +12,6 @@ type Props = {
 };
 
 const Carousel = ({ products }: Props) => {
-
   return (
     <div>
       <Swiper
@@ -22,7 +21,8 @@ const Carousel = ({ products }: Props) => {
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
-        }}>
+        }}
+        data-aos="fade-right" data-aos-delay={2000}>
         {products.map((product) => {
           return (
             <SwiperSlide key={product?.id}>
@@ -35,10 +35,10 @@ const Carousel = ({ products }: Props) => {
                   className="block"
                 />
                 <div className="w-full flex justify-center items-center flex-col absolute bottom-0 bg-[#222]/70  p-2">
-                  <h1 className="text-xl font-bold text-white">
+                  <h1 className=" text-base md:text-xl font-bold text-white">
                     {product.name}
                   </h1>
-                  <p className="text-base text-white">
+                  <p className="text-sm md:text-base text-white">
                     ${handlePriceFormat(product)}
                   </p>
                 </div>

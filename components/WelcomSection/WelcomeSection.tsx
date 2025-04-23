@@ -27,9 +27,9 @@ const WelcomeSection = ({ imageFile }: Props) => {
   }, []);
 
   return (
-    <section className="rounded bg-white py-8 sm:py-12">
+    <section className="rounded bg-white py-8 sm:py-12" data-aos="zoom-in" data-aos-delay={500}>
       <div className="mx-auto grid grid-cols-1 items-center justify-items-center gap-8 px-8 sm:px-16 md:grid-cols-2">
-        <div className="max-w-md space-y-4" data-aos="fade-down">
+        <div className="max-w-md space-y-4" data-aos="fade-down" data-aos-delay={1000}>
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
             {" "}
             Welcome To NextShop
@@ -64,6 +64,7 @@ const WelcomeSection = ({ imageFile }: Props) => {
             className="rounded"
             loading="lazy"
             data-aos="zoom-in"
+            data-aos-delay={1500}
           />
         )}
       </div>
